@@ -15,6 +15,7 @@ function pageLoaded() {
   let addBtn = `<button class="add">Add new ToDo</button>`;
   let itemNumber = 10;
 
+  //delete clicked row
   function deleteRow(e) {
     e.currentTarget.parentNode.remove();
     console.log("button clicked");
@@ -25,9 +26,10 @@ function pageLoaded() {
     root.insertAdjacentHTML("afterbegin", todoRow);
   }
 
-  let deleteBtns = document.querySelectorAll(".deleteBtn"); //select all the delete buttons
+  //select all the delete buttons from todo rows
+  let deleteBtns = document.querySelectorAll(".deleteBtn");
 
-  //give all the delete buttons function to delete row
+  //give all the delete buttons click event listener
   for (let i = 0; i < deleteBtns.length; i++) {
     deleteBtns[i].addEventListener("click", deleteRow);
   }
@@ -35,11 +37,13 @@ function pageLoaded() {
   //adding the new row button to the root div
   root.insertAdjacentHTML("afterend", addBtn);
 
+  //insert new todo row function
   function addNew() {
     root.insertAdjacentHTML("beforeend", todoRow);
     //TODO add click listener to new elements
   }
 
+  //event listener for add button
   document.querySelector(".add").addEventListener("click", addNew);
 }
 
